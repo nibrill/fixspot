@@ -1,0 +1,70 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block contenido %}
+    <!-- INICIO ENCABEZADO -->
+    <div class="">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-5 mt-5">
+                    <div class="intro-excerpt">
+                        <h1 class="fw-bold text-center">TALLERES</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br><br><br>
+    </div>
+    <!-- FIN ENCABEZADO -->
+
+    <!-- INICIO INFO -->
+    <div class="bg-page">
+        <br><br><br>
+        <div class="container mt-5 mb-5">
+            {% for taller in talleres %}
+            <div class="row mb-4">
+                <div class="col-lg-6">
+                    <div class="card bg-dark text-white shadow-lg rounded-5 shadow-lg">
+                        <div class="card-body">
+                            <div class="mb-3 bg-purple rounded-5 p-3">
+                                <h3 class="card-title text-uppercase fw-bold text-center">{{ taller.nombreTaller }}</h3>
+                            </div>
+                            <div class="mb-3 bg-purple rounded-5 p-3">
+                                <p class="mb-0 text-start fw-bold">Encargado taller:</p>
+                                <p class="mb-0 text-start">{{ taller.idUsuario.pnombre }} {{ taller.idUsuario.ap_paterno }}</p>
+                            </div>
+                            <div class="mb-3 bg-purple rounded-5 p-3">
+                                <p class="mb-0 text-start fw-bold">Descripción:</p>
+                                <p class="mb-0 text-start">{{ taller.descripcion }}</p>
+                            </div>
+                            <div class="mb-3 bg-purple rounded-5 p-3">
+                                <p class="mb-0 text-start fw-bold">Dirección:</p>
+                                <p class="mb-0 text-start">{{ taller.direccion }} {{taller.comuna}}</p>
+                            </div>
+                            <div class="mb-3 bg-purple rounded-5 p-3">
+                                <p class="mb-0 text-start fw-bold">Teléfono:</p>
+                                <p class="mb-0 text-start">{{ taller.telefono }}</p>
+                            </div>
+                            <div class="text-center">
+                                <a href="{% url 'agendar_hora' taller.idTaller %}" class="btn btn-primary rounded-pill mt-3">Agendar ahora</a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="{{ taller.imagen.url }}" alt="{{ taller.nombreTaller }}" class="img-fluid rounded-5 w-100 h-100" style="object-fit: cover;">
+                </div>
+            </div>
+            <br><br>
+            {% endfor %}
+        </div>
+        <br><br><br><br>
+    </div>
+    <!-- FINAL DEL CONTENIDO -->
+{% endblock %}
+{% block js %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+{% endblock js %}

@@ -1,0 +1,1 @@
+SELECT * FROM db_fixspot.django_session;

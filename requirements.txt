@@ -1,0 +1,9 @@
+django
+pymysql
+mysqlclient
+django-crispy-forms==1.14.0
+django-rest-framework
+djangorestframework
+requests
+Pillow
+python-docx
